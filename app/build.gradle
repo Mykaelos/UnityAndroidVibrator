@@ -23,19 +23,9 @@ android {
             java {
                 srcDir 'src/main/java'
             }
-//            resources {
-//                srcDir 'src/../lib'
-//            }
-//            output {
-//                classesDir 'build/classes'
-//                resourcesDir 'build/javaResources'
-//            }
         }
     }
 }
-
-// Use by calling:
-// D:\dev\LibraryProjects\UnityAndroidVibrator>gradlew jar
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -46,29 +36,15 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+// Use by calling:
+// D:\dev\LibraryProjects\UnityAndroidVibrator>gradlew jar
 task jar(type: Jar) {
-//    from android.sourceSets.main.allSource
     from 'build/intermediates/classes/release/'
     archiveName 'UnityAndroidVibrator.jar'
-
 }
 
-task removeJar(type: Delete) {
+task deleteJar(type: Delete) {
     delete 'build/libs/UnityAndroidVibrator.jar'
 }
 
-jar.dependsOn(removeJar, build)
-
-task deleteJar(type: Delete) {
-    delete 'libs/UnityAndroidVibrator.jar'
-}
-
-task createJar(type: Copy) {
-//    from('build/intermediates/bundles/release/')
-    from 'build/intermediates/classes/release/'
-    into('libs/jars/')
-    include('classes.jar')
-    rename('classes.jar', 'UnityAndroidVibrator.jar')
-}
-
-createJar.dependsOn(deleteJar, build)
+jar.dependsOn(deleteJar, build)

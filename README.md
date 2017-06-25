@@ -1,5 +1,7 @@
 This is an example project on how to make a Unity Android plugin, and it also doubles as a way to handle vibrations for Androids.
 
+:heavy_exclamation_mark: You should use the [AndroidVibrateManager](https://github.com/Mykaelos/MykaelosUnityLibrary/blob/master/Android/AndroidVibrateManager.cs) for vibrations instead of this, because it calls Android's vibrate class directly instead of using a jar. I'm leaving this project around as an example on how to make an Android Plugin.
+
 
 ### Build Jar
 Run the buildJar.bat or run gradlew jar. This will make the jar inside of the app/build/libs/ folder.
@@ -22,7 +24,7 @@ You can either copy the Unity built manifest from Temp/StatingArea/AndroidManife
 ```
 bool alwaysFalse = false;
 if (alwaysFalse) {
-    Handheld.Vibrate(); // Maybe this will work?
+    Handheld.Vibrate();
 }
 ```
 

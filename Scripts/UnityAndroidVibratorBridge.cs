@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class UnityAndroidVibratorBridge {
     private static AndroidJavaObject VibratorInstance = null;
@@ -32,7 +31,6 @@ public class UnityAndroidVibratorBridge {
         return IsInitialized() && VibratorInstance.Call<bool>("hasVibrator");
     }
 
-
     public static void Vibrate(long duration) {
         if (IsInitialized()) {
             VibratorInstance.Call("vibrate", duration);
@@ -42,6 +40,12 @@ public class UnityAndroidVibratorBridge {
     public static void Vibrate(long[] pattern, int repeat) {
         if (IsInitialized()) {
             VibratorInstance.Call("vibrate", pattern, repeat);
+        }
+    }
+    
+    public static void Cancel() {
+        if (IsInitialized()) {
+            VibratorInstance.Call("cancel");
         }
     }
 }
